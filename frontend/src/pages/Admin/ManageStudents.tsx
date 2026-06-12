@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Typography, Card, CardContent, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, TextField, MenuItem, Button, Grid, IconButton, Chip, CircularProgress, Alert, Pagination, InputAdornment } from '@mui/material';
 import { Search, PictureAsPdf, FilterList, Star } from '@mui/icons-material';
-import api from '../../services/api';
+import api, { API_BASE_URL } from '../../services/api';
 
 interface Student {
   studentId: number;
@@ -86,7 +86,7 @@ const ManageStudents: React.FC = () => {
   const getFullResumeUrl = (url: string) => {
     if (!url) return '';
     if (url.startsWith('http')) return url;
-    return `http://localhost:8080${url}`;
+    return `${API_BASE_URL}${url}`;
   };
 
   return (

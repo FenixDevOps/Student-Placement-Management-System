@@ -23,8 +23,7 @@ const Layout: React.FC = () => {
   useEffect(() => {
     if (!user || user.role !== 'STUDENT') return;
 
-    // Connect to Spring Boot WebSocket STOMP endpoint
-    const brokerURL = 'ws://localhost:8081/ws';
+    const brokerURL = import.meta.env.VITE_WS_BASE_URL || 'ws://localhost:8081/ws';
     const client = new Client({
       brokerURL,
       reconnectDelay: 5000,

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Typography, Card, CardContent, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, TextField, MenuItem, Button, Grid, IconButton, Chip, CircularProgress, Alert, Pagination, InputAdornment, Select, FormControl, InputLabel, Dialog, DialogTitle, DialogContent, DialogActions, LinearProgress } from '@mui/material';
 import { Search, PictureAsPdf, FilterList, Check, AssignmentInd, Business, Analytics, Info } from '@mui/icons-material';
-import api from '../../services/api';
+import api, { API_BASE_URL } from '../../services/api';
 
 interface Application {
   applicationId: number;
@@ -141,7 +141,7 @@ const ManageApplications: React.FC = () => {
   const getFullResumeUrl = (url: string) => {
     if (!url) return '';
     if (url.startsWith('http')) return url;
-    return `http://localhost:8080${url}`;
+    return `${API_BASE_URL}${url}`;
   };
 
   const getMatchScoreColor = (score: number | null) => {

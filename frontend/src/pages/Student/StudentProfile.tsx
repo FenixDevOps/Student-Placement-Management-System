@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Container, Box, Typography, Card, CardContent, TextField, Button, Grid, MenuItem, Alert, CircularProgress, Paper, Divider } from '@mui/material';
 import { CloudUpload, PictureAsPdf, Link, Save } from '@mui/icons-material';
 import { useAuth } from '../../context/AuthContext';
-import api from '../../services/api';
+import api, { API_BASE_URL } from '../../services/api';
 
 const branches = ['CSE', 'IT', 'ECE', 'EEE', 'ME', 'CE'];
 const currentYear = new Date().getFullYear();
@@ -155,7 +155,7 @@ const StudentProfile: React.FC = () => {
   const getFullResumeUrl = (url: string) => {
     if (!url) return '';
     if (url.startsWith('http')) return url;
-    return `http://localhost:8080${url}`;
+    return `${API_BASE_URL}${url}`;
   };
 
   if (loading) {

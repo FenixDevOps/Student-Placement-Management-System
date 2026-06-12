@@ -1,0 +1,36 @@
+services:
+  - type: web
+    name: placement-backend
+    env: docker
+    region: oregon
+    plan: free
+    dockerContext: backend
+    dockerfilePath: backend/Dockerfile
+    envVars:
+      - key: PORT
+        value: "8081"
+      - key: SPRING_DATASOURCE_URL
+        fromDatabase:
+          name: placement-db
+          property: connectionString
+      - key: SPRING_DATASOURCE_USERNAME
+        fromDatabase:
+          name: placement-db
+          property: user
+      - key: SPRING_DATASOURCE_PASSWORD
+        fromDatabase:
+          name: placement-db
+          property: password
+      - key: SPRING_JPA_DATABASE_PLATFORM
+        value: org.hibernate.dialect.PostgreSQLDialect
+      - key: SPRING_DATASOURCE_DRIVER_CLASS_NAME
+        value: org.postgresql.Driver
+      - key: FRONTEND_URL
+        value: "https://your-vercel-domain.vercel.app" # UPDATE THIS ONCE VERCEL DEPLOYMENT IS DONE
+
+databases:
+  - name: placement-db
+    databaseName: placement_db
+    user: postgres
+    region: oregon
+    plan: free

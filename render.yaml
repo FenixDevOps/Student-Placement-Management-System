@@ -28,7 +28,7 @@ services:
       - key: SPRING_DATASOURCE_DRIVER_CLASS_NAME
         value: org.postgresql.Driver
       - key: FRONTEND_URL
-        value: "https://your-vercel-domain.vercel.app" # UPDATE THIS AFTER VERCEL DEPLOYMENT
+        value: "https://student-placement-management-system-kappa.vercel.app" # UPDATE THIS AFTER VERCEL DEPLOYMENT
 
 databases:
   - name: placement-db
